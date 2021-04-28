@@ -9,6 +9,7 @@ import { Button, Divider, Header, Icon, SearchBar } from 'react-native-elements'
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutAction } from '../action'
+import { getProductAction } from '../action/ProductAction';
 import CardProduct from '../component/CardProduct';
 import { URL_API } from '../helper';
 
@@ -40,16 +41,19 @@ const HomePage = (props) => {
         }
     })
 
-    const onBtnLogout = () => {
-        dispatch(logoutAction)
-    }
+    const { produkList } = useSelector(({ ProductReducer }) => {
+        return {
+            produkList: ProductReducer.produk_list
+        }
+    })
 
     useEffect(() => {
         getBanner()
-        getProduct()
+        dispatch(getProductAction())
     }, [])
 
     const getBanner = async () => {
+        console.log("PL", produkList)
         try {
             let getBanner = await axios.get(URL_API + `/banner`)
             console.log("get data banner", getBanner.data)
@@ -72,13 +76,10 @@ const HomePage = (props) => {
     }
 
     const printProduk = () => {
-        return produk.map((item, index) => {
+        return produkList.map((item, index) => {
             return (
                 <View style={{ width: wp(50) }}>
-                    {
                         <CardProduct data={item} keyExtractor={index} />
-                        || <Skeleton duration={2}/>
-                    }
                 </View>
             )
         })
@@ -119,7 +120,7 @@ const HomePage = (props) => {
                         showsHorizontalScrollIndicator={false}
                     />
                 </View>
-                <View style={{flexDirection: 'column', justifyContent:'center', alignItems: 'center'}}>
+                <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                     <Text>Telusuri Koleksi Kami</Text>
                     <View>
                         <View>
@@ -132,9 +133,9 @@ const HomePage = (props) => {
                         </View>
                     </View>
                 </View>
-                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                    <Text style={{margin: '1%', fontWeight: 'bold'}}>Produk kami</Text>
-                    <Text style={{margin: '1%'}}>Lihat semua</Text>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Text style={{ margin: '1%', fontWeight: 'bold' }}>Produk kami</Text>
+                    <Text style={{ margin: '1%' }}>Lihat semua</Text>
                 </View>
                 <View style={{ backgroundColor: 'white', flexDirection: 'row', flexWrap: 'wrap' }}>
                     {printProduk()}

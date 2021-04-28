@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { keepLogin } from '../action';
 import TabNavigation from './TabNavigation'
 import TransactionPage from '../pages/Transaction';
+import { getProductAction } from '../action/ProductAction';
 const Stack = createStackNavigator()
 const StackNavigation = (props) => {
 
@@ -15,6 +16,7 @@ const StackNavigation = (props) => {
 
     useEffect(() => {
         dispatch(keepLogin())
+        dispatch(getProductAction())
     }, [])
 
     return (
