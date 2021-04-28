@@ -76,7 +76,6 @@ const CartPage = (props) => {
             <View style={{ flexDirection: 'row', backgroundColor: '#f7c600', alignItems: 'center' }}>
                 <View style={{ width: wp(60), padding: '3%' }}>
                     <Text h5>Total Payment:</Text>
-                    <Divider />
                     <Text h4>IDR. {getTotal()}</Text>
                 </View>
                 <View style={{ width: wp(40), padding: '3%' }}>
