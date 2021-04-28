@@ -69,7 +69,7 @@ const CartPage = (props) => {
     return (
         <>
             <View style={{ flex: 1, backgroundColor: 'white', paddingTop: hp(4) }}>
-                <ScrollView>
+                <ScrollView showsVerticalScrollIndicator={false}>
                     {printCart()}
                 </ScrollView>
             </View>

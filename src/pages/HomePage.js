@@ -107,7 +107,7 @@ const HomePage = (props) => {
                             iconStyle={{ color: 'white' }} style={{ marginHorizontal: wp(2) }} />
                     </View>}
             />
-            <ScrollView style={{ backgroundColor: 'white', flex: 1 }}>
+            <ScrollView style={{ backgroundColor: 'white', flex: 1 }} showsVerticalScrollIndicator={false}>
                 <View style={{ margin: '1%' }}>
                     {/* FlatList semacam scroll view tapi bisa lgsg render item jadi gausah bikin fungsi print data */}
                     <FlatList

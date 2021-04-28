@@ -145,7 +145,7 @@ const TransactionPage = (props) => {
         })
     }
     return (
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{ flex: 1 }}>
                 {/* <Text h1>Ini Transactions page</Text> */}
                 <Overlay style={{ width: wp(80) }} isVisible={visible} onBackdropPress={() => setVisible(!visible)}>

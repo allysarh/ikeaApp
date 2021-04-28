@@ -63,7 +63,7 @@ const ProfilePage = (props) => {
             })
     }
     return (
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{ flex: 1 }}>
                 {/* MODAL CAM*/}
                 <Overlay style={{ width: wp(80) }} isVisible={visible} onBackdropPress={() => setVisible(!visible)}>
